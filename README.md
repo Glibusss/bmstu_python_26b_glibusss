@@ -5,6 +5,7 @@
 | Домашнее задание | Покрытие |
 |:-----------------|:---------|
 | [ДЗ 01](01/README.md) | ![HW 01 coverage](https://img.shields.io/badge/HW_01_coverage-100%25-brightgreen) |
+| [ДЗ 02](02/README.md) | ![HW 02 coverage](https://img.shields.io/badge/HW_02_coverage-100%25-brightgreen) |
 
 
 Покрытие измеряется с учётом ветвлений командой `coverage` и должно быть не
