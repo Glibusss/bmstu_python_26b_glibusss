@@ -2,6 +2,7 @@
 branch = true
 omit =
     */tests/*
+    */test_*.py
 
 [report]
 exclude_also =

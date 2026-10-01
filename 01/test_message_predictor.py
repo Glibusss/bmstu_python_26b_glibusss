@@ -2,7 +2,7 @@ from unittest.mock import Mock, patch
 
 import pytest
 
-from homework import SomeModel, predict_message_mood
+from message_predictor import SomeModel, predict_message_mood
 
 
 @pytest.mark.parametrize(
@@ -27,7 +27,10 @@ def test_prediction_categories(
     model = Mock()
     model.predict.return_value = score
 
-    with patch("homework.SomeModel", return_value=model) as model_class:
+    with patch(
+        "message_predictor.SomeModel",
+        return_value=model,
+    ) as model_class:
         result = predict_message_mood(
             "test message",
             bad_threshold,
@@ -144,7 +147,7 @@ def test_invalid_thresholds_raise(
     ],
 )
 def test_invalid_prediction_raises(prediction, error, message):
-    with patch("homework.SomeModel.predict", return_value=prediction):
+    with patch("message_predictor.SomeModel.predict", return_value=prediction):
         with pytest.raises(error, match=message):
             predict_message_mood("message")
 

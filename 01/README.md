@@ -2,10 +2,11 @@
 
 Решение содержит две части:
 
-- `predict_message_mood` создаёт `SomeModel`, получает оценку сообщения и
-  возвращает `"неуд"`, `"норм"` или `"отл"`;
-- `filter_file` лениво фильтрует строки пути или открытого текстового файла по
-  полным словам без учёта регистра, причём стоп-слова имеют приоритет.
+- `message_predictor.py` содержит `SomeModel` и `predict_message_mood`;
+- `file_filter.py` содержит ленивый генератор `filter_file`.
+
+Тестовые модули `test_message_predictor.py` и `test_file_filter.py` находятся
+в корне каталога домашнего задания вместе с модулями решения.
 
 ## Контракт ошибок
 
@@ -21,10 +22,12 @@
 
 ```bash
 python -m pip install -r ../requirements-dev.txt
-python -m coverage run --rcfile=../.coveragerc -m pytest tests
+python -m coverage run --rcfile=../.coveragerc -m pytest .
 python -m coverage report --rcfile=../.coveragerc
-python -m flake8 --config=../.flake8 homework.py tests
-python -m pylint --rcfile=../.pylintrc homework.py tests
+python -m flake8 --config=../.flake8 message_predictor.py file_filter.py \
+    test_message_predictor.py test_file_filter.py
+python -m pylint --rcfile=../.pylintrc message_predictor.py file_filter.py \
+    test_message_predictor.py test_file_filter.py
 ```
 
 Минимально допустимое покрытие - 90%. Те же команды запускаются вручную через
